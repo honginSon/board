@@ -14,6 +14,11 @@ public enum CustomErrorCode {
     MEMBER_NOT_FOUND(HttpStatus.NOT_FOUND, "해당 회원이 존재하지 않습니다"),
     BOARD_NOT_FOUND(HttpStatus.NOT_FOUND, "해당 게시판이 존재하지 않습니다"),
     POST_NOT_FOUND(HttpStatus.NOT_FOUND, "해당 게시글이 존재하지 않습니다"),
+
+    /**
+     * 400 BAD_REQUEST
+     */
+    DUPLICATED_MEMBER_NAME(HttpStatus.BAD_REQUEST, "이미 등록된 회원 이름입니다"),
     ;
 
     private final HttpStatus status;
