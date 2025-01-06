@@ -31,6 +31,11 @@ public class MemberController {
             log.info(e.getCustomErrorCode().getMessage());
         }
 
-        return "redirect:/";
+        return "redirect:/login";
+    }
+
+    @GetMapping("/login")
+    public String loginView() {
+        return "member/login";
     }
 }

@@ -21,6 +21,12 @@ public class SecurityConfig {
                 .csrf(auth -> auth
                         .disable()
                 )
+                .formLogin(auth ->auth
+                        .loginPage("/login")
+                        .usernameParameter("name")
+                        .loginProcessingUrl("/loginProc")
+                        .permitAll()
+                )
         ;
 
         return http.build();
