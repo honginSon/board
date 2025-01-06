@@ -18,10 +18,13 @@ public class Member {
 
     private String name;
 
+    private String password;
+
     //==생성 메서드==
-    public static Member createMember(AddMemberDto memberDto) {
+    public static Member createMember(String name, String password) {
         Member member = new Member();
-        member.name = memberDto.getName();
+        member.name = name;
+        member.password = password;
 
         return member;
     }
