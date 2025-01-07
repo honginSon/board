@@ -27,13 +27,13 @@ public class PostService {
     private final BoardRepository boardRepository;
 
     @Transactional
-    public Long addPost(Long memberId, Long boardId, AddPostDto postDto) {
-
-        Optional<Member> optionalMember = memberRepository.findById(memberId);
-        Member findMember = optionalMember.orElseThrow(() -> new CustomException(CustomErrorCode.MEMBER_NOT_FOUND));
+    public Long addPost(Long boardId, AddPostDto postDto) {
 
         Optional<Board> optionalBoard = boardRepository.findById(boardId);
         Board findBoard = optionalBoard.orElseThrow(() -> new CustomException(CustomErrorCode.BOARD_NOT_FOUND));
+
+        Optional<Member> optionalMember = memberRepository.findById(findBoard.getMember().getId());
+        Member findMember = optionalMember.orElseThrow(() -> new CustomException(CustomErrorCode.MEMBER_NOT_FOUND));
 
         Post post = Post.createPost(findMember, findBoard, postDto);
 

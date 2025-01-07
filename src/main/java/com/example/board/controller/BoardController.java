@@ -43,6 +43,8 @@ public class BoardController {
     @GetMapping("/boards/{id}")
     public String boardView(@PathVariable Long id, Model model) {
 
+        model.addAttribute("boardId", id);
+
         List<Post> posts = postService.getPostList(id);
         model.addAttribute("posts", posts);
 
