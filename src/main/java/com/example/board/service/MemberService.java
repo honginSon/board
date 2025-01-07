@@ -33,4 +33,8 @@ public class MemberService {
 
         return memberRepository.save(newMember).getId();
     }
+
+    public Member findOneByName(String name) {
+        return memberRepository.findByName(name).orElseThrow(() -> new CustomException(CustomErrorCode.MEMBER_NOT_FOUND));
+    }
 }
