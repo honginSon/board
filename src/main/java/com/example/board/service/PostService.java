@@ -49,7 +49,7 @@ public class PostService {
         post.update(postDto);
     }
 
-    public List<Post> getPostList() {
-        return postRepository.findAll();
+    public List<Post> getPostList(Long boardId) {
+        return postRepository.findAllByBoardId(boardId);
     }
 }

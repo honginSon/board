@@ -10,5 +10,12 @@ Home Page
 <hr>
 <span sec:authentication="name"></span>
 <button onclick="window.location.href='/boards/new'">게시글 추가</button>
+<hr>
+<table>
+    <tr th:each="board : ${boards}">
+        <td><a th:href="@{/boards/{id}(id=${board.id})}" th:text="${board.title}">게시판 제목</a></td>
+    </tr>
+</table>
+
 </body>
 </html>
