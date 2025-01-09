@@ -1,5 +1,6 @@
 package com.example.board.controller;
 
+import com.example.board.domain.Post;
 import com.example.board.dto.AddPostDto;
 import com.example.board.service.PostService;
 import lombok.RequiredArgsConstructor;
@@ -25,10 +26,21 @@ public class PostController {
     }
 
     @PostMapping("/posts/new")
-    public String addPost(@RequestParam("boardId") Long boardId ,AddPostDto postDto, Model model) {
+    public String addPost(@RequestParam("boardId") Long boardId, AddPostDto postDto, Model model) {
 
         postService.addPost(boardId, postDto);
 
         return "redirect:/boards/" + boardId;
+    }
+
+    @GetMapping("/posts/{id}")
+    public String postView(@PathVariable Long id, Model model) {
+
+        Post findPost = postService.getPost(id);
+
+        model.addAttribute("boardId", findPost.getBoard().getId());
+        model.addAttribute("post", findPost);
+
+        return "post/post-detail";
     }
 }

@@ -13,6 +13,6 @@ Add Post Page
   <textarea name="content" cols="30" rows="10" placeholder="content"></textarea>
   <input type="submit" value="작성" />
 </form>
-<button onclick="window.history.back()">취소</button>
+<a th:href="@{/boards/{id}(id=${boardId})}">취소</a>
 </body>
 </html>

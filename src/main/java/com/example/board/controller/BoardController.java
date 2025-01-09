@@ -48,6 +48,6 @@ public class BoardController {
         List<Post> posts = postService.getPostList(id);
         model.addAttribute("posts", posts);
 
-        return "/post/post-list";
+        return "board/board-detail";
     }
 }

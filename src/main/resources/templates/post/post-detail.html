@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>특정 게시글</title>
+</head>
+<body>
+특정 게시글 Page
+<hr>
+<table border="1">
+  <thead>
+  <tr>
+    <th>title</th>
+    <th>content</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td th:text="${post.title}"></td>
+    <td th:text="${post.content}"></td>
+  </tr>
+  </tbody>
+</table>
+<a th:href="@{/boards/{id}(id=${boardId})}">게시글 목록으로</a>
+</body>
+</html>

@@ -52,4 +52,8 @@ public class PostService {
     public List<Post> getPostList(Long boardId) {
         return postRepository.findAllByBoardId(boardId);
     }
+
+    public Post getPost(Long postId) {
+        return postRepository.findById(postId).orElseThrow(() -> new CustomException(CustomErrorCode.POST_NOT_FOUND));
+    }
 }

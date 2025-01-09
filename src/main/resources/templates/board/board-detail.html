@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>특정 게시판</title>
+</head>
+<body>
+Board Page
+<hr>
+<a th:href="@{/posts/new(boardId=${boardId})}">게시글 추가</a>
+<hr>
+
+<table border="1">
+    <caption>게시글 목록</caption>
+    <thead>
+    <tr>
+        <th>title</th>
+        <th>content</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="post : ${posts}">
+        <td><a th:href="@{/posts/{id}(id=${post.id})}" th:text="${post.title}">게시글 제목</a></td>
+        <td th:text="${post.content}"></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
