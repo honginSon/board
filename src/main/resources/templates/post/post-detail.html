@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>특정 게시글</title>
@@ -7,6 +7,7 @@
 <body>
 특정 게시글 Page
 <hr>
+<img th:each="postImage : ${postImages}" th:src="@{|/posts/images/${postImage.getStoreFileName()}|}" alt="게시글 이미지">
 <table border="1">
   <thead>
   <tr>

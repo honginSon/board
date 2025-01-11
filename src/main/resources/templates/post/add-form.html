@@ -7,10 +7,12 @@
 <body>
 Add Post Page
 <hr>
-<form th:action="@{/posts/new(boardId=${boardId})}" method="post">
+<form th:action="@{/posts/new(boardId=${boardId})}" method="post" enctype="multipart/form-data">
   <input type="text" name="title" placeholder="title">
   <br>
   <textarea name="content" cols="30" rows="10" placeholder="content"></textarea>
+    <br>
+    <input type="file" name="postImages" multiple="multiple" />
   <input type="submit" value="작성" />
 </form>
 <a th:href="@{/boards/{id}(id=${boardId})}">취소</a>
