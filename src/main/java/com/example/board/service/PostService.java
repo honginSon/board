@@ -25,6 +25,7 @@ public class PostService {
     private final PostRepository postRepository;
     private final MemberRepository memberRepository;
     private final BoardRepository boardRepository;
+    private final PostImageService postImageService;
 
     @Transactional
     public Long addPost(Long boardId, AddPostDto postDto) {
@@ -36,8 +37,11 @@ public class PostService {
         Member findMember = optionalMember.orElseThrow(() -> new CustomException(CustomErrorCode.MEMBER_NOT_FOUND));
 
         Post post = Post.createPost(findMember, findBoard, postDto);
+        Post savedPost = postRepository.save(post);
 
-        return postRepository.save(post).getId();
+        postImageService.addImages(savedPost.getId(), postDto);
+
+        return savedPost.getId();
     }
 
     @Transactional
